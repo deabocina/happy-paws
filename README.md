@@ -13,13 +13,13 @@ Welcome to the Web Shop for Pets, an online platform designed to streamline the 
 ## Key Features
 
 ### User Features
-- Customers can create accounts, browse products, manage their shopping carts and place orders. They can also track their order status and wishlist products. In addition to that, they can also create up to three pet profiles.
-  - **Product Search and Filter**: Customers can search for products and use filters to narrow down results based on criteria like category, subcategory and brand. Application also includes the option to sort all products by price.
-  - **Shopping Cart**: Users can add products to their shopping cart, view cart details and proceed to checkout.
-  - **Order Management:**: Customers can view their order history and track the status of their current orders.
-  - **Profile Management**: Users can update their profiles, including contact information and preferences.
-  - **Wishlist**: Customers can add products to their wishlist for future reference.
-  - **Rating Products**: After the order has been delivered, user has the option to rate the delivery with numbers from 1 to 5.
+Customers can create accounts, browse products, manage their shopping carts and place orders. They can also track their order status and wishlist products. In addition to that, they can also create up to three pet profiles.
+- **Product Search and Filter**: Customers can search for products and use filters to narrow down results based on criteria like category, subcategory and brand. Application also includes the option to sort all products by price.
+- **Shopping Cart**: Users can add products to their shopping cart, view cart details and proceed to checkout.
+- **Order Management:**: Customers can view their order history and track the status of their current orders.
+- **Profile Management**: Users can update their profiles, including contact information and preferences.
+- **Wishlist**: Customers can add products to their wishlist for future reference.
+- **Rating Products**: After the order has been delivered, user has the option to rate the delivery with numbers from 1 to 5.
 
 ### Staff Features
 Staff members can log in to manage product listings, process orders and handle discount management.
