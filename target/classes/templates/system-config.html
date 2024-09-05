@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | System Config</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/staff-mgmt.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/admin-home"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/discount-management"><img src="/img/discount-management.png" alt="Discount Management" width="40" height="40"> DISCOUNT MANAGEMENT</a></li>
+            <li><a href="/product-management"><img src="/img/product-management.png" alt="Product Management" width="43" height="43"> PRODUCT MANAGEMENT</a></li>
+            <li><a href="/order-management"><img src="/img/order-management.png" alt="Order Management" width="40" height="40"> ORDER MANAGEMENT</a></li>
+            <li><a href="/user-management"><img src="img/user-management.png" alt="User Management" width="40" height="40"> USER MANAGEMENT</a></li>
+            <li><a href="/system-config"><img src="/img/system-config.png" alt="System Config" width="40" height="40"></a></li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>System Configuration</h1>
+
+<div class="system-config-container">
+    <h3 class="config-header">TAX</h3>
+    <form th:action="@{/update-tax}" method="post">
+        <label for="taxAmount">Tax Percentage (%):</label>
+        <input type="number" id="taxAmount" name="taxAmount" class="config-option" min="0" max="100" th:value="${currentTaxAmount}">
+        <button type="submit" class="purple-button config-button">Update</button>
+    </form>
+
+    <h3 class="config-header">BRANDS</h3>
+    <h4>Add Brand</h4>
+    <form th:action="@{/save-brand}" th:object="${brand}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label for="brandName">Brand Name:</label>
+        <input type="text" id="brandName" name="brandName" placeholder="e.g. Brit Care" th:field="*{name}">
+        <button type="submit" class="purple-button config-button">Save</button>
+    </form>
+</div>
+<button class="purple-button" onclick="window.location.href='/system-config-brand-update';">Manage All Brands</button><br>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

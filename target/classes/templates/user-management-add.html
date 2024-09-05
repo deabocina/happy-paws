@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | User Management</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/staff-mgmt.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+    <script src="/js/form-validation.js"></script>
+    <script src="/js/starter.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/admin-home"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/discount-management"><img src="/img/discount-management.png" alt="Discount Management" width="40" height="40"> DISCOUNT MANAGEMENT</a></li>
+            <li><a href="/product-management"><img src="/img/product-management.png" alt="Product Management" width="43" height="43"> PRODUCT MANAGEMENT</a></li>
+            <li><a href="/order-management"><img src="/img/order-management.png" alt="Order Management" width="40" height="40"> ORDER MANAGEMENT</a></li>
+            <li><a href="/user-management"><img src="img/user-management.png" alt="User Management" width="40" height="40"> USER MANAGEMENT</a></li>
+            <li><a href="/system-config"><img src="/img/system-config.png" alt="System Config" width="40" height="40"></a></li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Add New User</h1>
+
+<form action="/add-user" class="register__form" method="POST" th:object="${registerRequest}" onsubmit="return showConfirmation()">
+    <div class="form-grid">
+        <div class="form-row">
+            <label for="name"><b>Name</b> <span style="color: red;">*</span></label>
+            <input type="text" name="name" id="name" th:value="${registerRequest.name}" required>
+        </div>
+
+        <div class="form-row">
+            <label for="surname"><b>Surname</b> <span style="color: red;">*</span></label>
+            <input type="text" name="surname" id="surname" th:value="${registerRequest.surname}" required>
+        </div>
+
+        <div class="form-row">
+            <label for="role"><b>Role:</b> <span style="color: red;">*</span></label>
+            <select id="role" name="role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="User">User</option>
+                <option value="Staff">Staff</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="gender"><b>Gender</b> <span style="color: red;">*</span></label>
+            <select name="gender" id="gender" class="register-select" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male" th:selected="${registerRequest.gender=='Male'}" >Male</option>
+                <option value="Female" th:selected="${registerRequest.gender=='Female'}" >Female</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="email"><b>E-mail</b> <span style="color: red;">*</span></label>
+            <input type="email" name="email" id="email" th:value="${registerRequest.email}" required>
+        </div>
+
+        <div class="form-row">
+            <label for="phoneNumber"><b>Phone Number</b></label>
+            <input type="text" name="phoneNumber" id="phoneNumber" th:value="${registerRequest.phoneNumber}">
+        </div>
+
+        <div class="form-row">
+            <label for="dateOfBirth"><b>Date of Birth</b> <span style="color: red;">*</span></label>
+            <input type="date" name="dateOfBirth" id="dateOfBirth" th:value="${registerRequest.dateOfBirth}" required>
+        </div>
+
+        <div class="form-row">
+            <label for="city"><b>City</b></label>
+            <select name="city" id="city" class="register-select" required>
+                <option value="" disabled selected>Select City</option>
+                <option value="Zagreb" th:selected="${registerRequest.city == 'Zagreb'}">Zagreb</option>
+                <option value="Split" th:selected="${registerRequest.city == 'Split'}">Split</option>
+                <option value="Rijeka" th:selected="${registerRequest.city == 'Rijeka'}">Rijeka</option>
+                <option value="Osijek" th:selected="${registerRequest.city == 'Osijek'}">Osijek</option>
+                <option value="Zadar" th:selected="${registerRequest.city == 'Zadar'}">Zadar</option>
+                <option value="Slavonski Brod" th:selected="${registerRequest.city == 'Slavonski Brod<'}">Slavonski Brod</option>
+                <option value="Pula" th:selected="${registerRequest.city == 'Pula'}">Pula</option>
+                <option value="Sesvete" th:selected="${registerRequest.city == 'Sesvete'}">Sesvete</option>
+                <option value="Karlovac" th:selected="${registerRequest.city == 'Karlovac'}">Karlovac</option>
+                <option value="Varaždin" th:selected="${registerRequest.city == 'Varaždin'}">Varaždin</option>
+                <option value="Šibenik" th:selected="${registerRequest.city == 'Šibenik'}">Šibenik</option>
+                <option value="Sisak" th:selected="${registerRequest.city == 'Sisak'}">Sisak</option>
+                <option value="Vinkovci" th:selected="${registerRequest.city == 'Vinkovci'}">Vinkovci</option>
+                <option value="Vukovar" th:selected="${registerRequest.city == 'Vukovar'}">Vukovar</option>
+                <option value="Dubrovnik" th:selected="${registerRequest.city == 'Dubrovnik'}">Dubrovnik</option>
+                <option value="Bjelovar" th:selected="${registerRequest.city == 'Bjelovar'}">Bjelovar</option>
+                <option value="Koprivnica" th:selected="${registerRequest.city == 'Koprivnica'}">Koprivnica</option>
+                <option value="Đakovo" th:selected="${registerRequest.city == 'Đakovo'}">Đakovo</option>
+                <option value="Požega" th:selected="${registerRequest.city == 'Požega'}">Požega</option>
+                <option value="Solin" th:selected="${registerRequest.city == 'Solin'}">Solin</option>
+                <option value="Kaštela" th:selected="${registerRequest.city == 'Kaštela'}">Kaštela</option>
+                <option value="Samobor" th:selected="${registerRequest.city == 'Samobor'}">Samobor</option>
+                <option value="Metković" th:selected="${registerRequest.city == 'Metković'}">Metković</option>
+                <option value="Čakovec" th:selected="${registerRequest.city == 'Čakovec'}">Čakovec</option>
+                <option value="Virovitica" th:selected="${registerRequest.city == 'Virovitica'}">Virovitica</option>
+                <option value="Kutina" th:selected="${registerRequest.city == 'Kutina'}">Kutina</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="address"><b>Address</b></label>
+            <input type="text" name="address" id="address" th:value="${registerRequest.address}" required>
+        </div>
+
+        <div class="form-row">
+            <label for="password"><b>Password</b> <span style="color: red;">*</span></label>
+            <input type="password" name="password" id="password" required>
+        </div>
+
+        <div class="form-row">
+            <label for="confirmPassword"><b>Confirm Password</b> <span style="color: red;">*</span></label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+        </div>
+    </div>
+    <div class="center-button">
+        <input type="submit" class="purple-button" value="Register"><small style="color: red;"> * Required field</small>
+    </div>
+</form>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

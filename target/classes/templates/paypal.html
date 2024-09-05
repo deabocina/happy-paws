@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>PayPal Payment Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/paypal.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+
+<div class="completed-payment-container">
+    <img src="/img/logo.png" alt="Happy Paws Logo" width="280" height="220">
+    <h1>Payment Completed Successfully</h1>
+    <p>Thank you for completing your payment through PayPal! Your transaction has been successfully processed. Now, the
+        next step is to select your preferred delivery option to finalize your order.</p>
+
+    <div class="delivery-note">
+        <p><strong>Note:</strong> The delivery options are available at no extra cost. You can choose the method that best
+            suits your needs without any additional charges.</p>
+    </div>
+
+    <form action="/buy" method="post">
+
+        <h3>Select Your Delivery Option</h3>
+        <p>Please choose from the following delivery options:</p>
+        <select id="deliveryOption" name="deliveryOption" class="custom-select">
+            <option value="Pickup">Pickup (1-11 working days)</option>
+            <option value="GLS Pickup">GLS Pickup (5-8 working days)</option>
+            <option value="GLS Delivery">GLS Delivery (5-8 working days)</option>
+        </select>
+
+        <button type="submit" class="purple-button">Continue</button>
+    </form>
+
+    <div class="delivery-note">
+        <p>After selecting your preferred delivery option, you will receive an order confirmation that includes a summary of
+        your order with all relevant details.</p>
+    </div>
+</div>
+
+</body>
+</html>

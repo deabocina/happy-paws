@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | Payment options</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/misc.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+<header th:if="${user == null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/login"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<header th:if="${user != null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/wishlist"><img src="/img/wishlist.png" alt="Wishlist" width="40" height="40"></a></li>
+            <li><a href="/user-page"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<h1>Payment Options</h1>
+<div class="payment-details">
+    During the ordering process, you can choose one of the following payment methods:<br><br>
+
+    <h3>CREDIT OR DEBIT CARD</h3>
+    Possibility to pay in installments with HPB and PBZ bank cards (1-6 installments):<br>
+    <ul>
+        <li>&#9702; American Express</li>
+        <li>&#9702; Diners Club</li>
+        <li>&#9702; MasterCard</li>
+        <li>&#9702; Maestro</li>
+        <li>&#9702; Visa</li>
+    </ul>
+
+    Payment is secure and encrypted.<br><br>
+
+    HAPPY PAWS uses <b><a href="https://www.paypal.com/ie/home">PayPal</a></b> for online payments.<br><br>
+
+    <b>PayPal is a widely used and secure system for online payments,</b> allowing real-time payments,
+    as well as transactions through credit and debit cards, and other payment methods. PayPal ensures the
+    secure entry and transfer of payment data for both buyers and merchants, supported by its compliance
+    with industry security standards. PayPal uses advanced security measures, including SSL certificate
+    encryption and the TLS 1.2 cryptographic protocol, to protect data during entry and transfer.
+    <br><br>
+
+    <h3>CASH ON DELIVERY</h3>
+    Payment in cash or by card to the courier upon package delivery.<br>
+    <ul>
+        <li>&#9702; Payment in cash to the courier. Cash on delivery is possible when ordering to all addresses on the continent and islands listed
+            <b><a href="https://gls-group.com/HR/en/business-customers/products-services/">HERE</a></b>. Cash on delivery is not possible for all other islands
+            due to the nature of delivery.</li><br>
+        <li>&#9702; One-time card payment to DPD or GLS courier. Upon package delivery, it is possible to make a one-time card payment to the courier.</li><br>
+        <li>&#9702; DPD card payment - The package recipient will first receive a notice of the expected package delivery, followed by a notice containing
+            a link to the WSPay system. The recipient has the option to make an online payment for the package using one of the following cards:
+            Maestro, Mastercard, Visa, or Diners.</li><br>
+        <li>&#9702; GLS card payment - Payment to the courier on a POS device upon package delivery.</li>
+    </ul>
+
+    <h3>BANK TRANSFER</h3>
+    When paying by bank transfer, it is necessary to provide personal and bank card information. Processing of this
+    data is subject to the HAPPY PAWS privacy statement. The bank transfer for wire transfer orders must be made within 24 hours of placing
+    the order. For transfers from foreign banks, it is necessary to check the fee charged by the bank for the transaction and pay the fee amount
+    added to the order cost.<br><br>
+
+    <div class="bank-transfer">
+        Instructions for payment by bank transfer:<br><br>
+
+        <b>Recipient:</b> HAPPY PAWS d.o.o., Zlodrina poljana 3, Split<br>
+        <b>IBAN:</b> HR6024020061500025863<br><br>
+
+        Hrvatska poštanska banka d.d.<br>
+        <b>Model and reference number:</b> 00 - [date of payment in the form, e.g., 07-04-2020]<br>
+        <b>Payment description:</b> Enter the order number here<br><br>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

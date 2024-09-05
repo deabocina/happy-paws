@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | Product Management</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/staff-mgmt.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+    <script src="/js/form-validation.js"></script>
+</head>
+<body>
+<header th:if="${user.role == 'Staff'}">
+    <nav>
+        <ul>
+            <li><a href="/staff-home"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/discount-management"><img src="/img/discount-management.png" alt="Discount Management" width="40" height="40"> DISCOUNT MANAGEMENT</a></li>
+            <li><a href="/product-management"><img src="/img/product-management.png" alt="Product Management" width="43" height="43"> PRODUCT MANAGEMENT</a></li>
+            <li><a href="/order-management"><img src="/img/order-management.png" alt="Order Management" width="40" height="40"> ORDER MANAGEMENT</a></li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<header th:if="${user.role == 'Admin'}">
+    <nav>
+        <ul>
+            <li><a href="/admin-home"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/discount-management"><img src="/img/discount-management.png" alt="Discount Management" width="40" height="40"> DISCOUNT MANAGEMENT</a></li>
+            <li><a href="/product-management"><img src="/img/product-management.png" alt="Product Management" width="43" height="43"> PRODUCT MANAGEMENT</a></li>
+            <li><a href="/order-management"><img src="/img/order-management.png" alt="Order Management" width="40" height="40"> ORDER MANAGEMENT</a></li>
+            <li><a href="/user-management"><img src="img/user-management.png" alt="User Management" width="40" height="40"> USER MANAGEMENT</a></li>
+            <li><a href="/system-config"><img src="/img/system-config.png" alt="System Config" width="40" height="40"></a></li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Product Management</h1>
+
+
+<button class="purple-button" onclick="window.location.href='/product-management-add';">Add New Product</button>
+
+<div class="staff-product-container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Stock Quantity</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Pet Type</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Tax</th>
+            <th>Buyers</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.stockQuantity}"></td>
+            <td><img th:src="@{/img/} + ${product.productImage}" alt="Product Image" class="product-image"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.petType}"></td>
+            <td th:text="${product.category}"></td>
+            <td th:text="${product.subcategory}"></td>
+            <td th:text="${product.brand.name}"></td>
+            <td th:text="${product.price} + ' €'"></td>
+            <td th:text="${product.currentRating}"></td>
+            <td th:text="${product.taxAmount + '%'}"></td>
+            <td th:text="${product.numberOfBuyers}"></td>
+            <td>
+                <form th:action="@{'/update-product/' + ${product.id}}" method="get">
+                    <input type="hidden" name="productId" th:value="${product.id}" />
+                    <button type="submit" class="purple-button">Update</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{'/delete-product/' + ${product.id}}" method="post">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit" style="background-color: transparent; border: none; cursor: pointer;" onclick="return confirm('Are you sure you want to delete this product?');"><img src="/img/trash-bin.png" alt="Bin" width="50" height="50"></button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
