@@ -1,0 +1,26 @@
+h1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h3 {
+    border-bottom: 5px solid #c64a8a;
+}
+
+.completed-payment-container {
+    text-align: center;
+    margin: auto 25% auto 25%;
+}
+
+.custom-select {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 300px;
+	border-radius: 20px;
+}
+
+.delivery-note p {
+    margin-bottom: 40px;
+}

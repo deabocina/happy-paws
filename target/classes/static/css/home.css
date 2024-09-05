@@ -1,0 +1,36 @@
+.home-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.home-icons > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: max-content;
+}
+
+.pet-selection-section, .brand-selection-section, .dog-selection-section, .cat-selection-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.pet-selection-section p, .brand-selection-section p, .dog-selection-section p, .cat-selection-section p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-right: 60px;
+}
+
+.pet-selection-section img, .brand-selection-section img, .dog-selection-section img, .cat-selection-section img {
+    border: 5px solid black;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    margin-right: 60px;
+}
