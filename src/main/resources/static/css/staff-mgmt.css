@@ -1,0 +1,90 @@
+h1 {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+.staff-product-container,
+.user-management-container {
+    margin-top: 30px;
+    margin-bottom: 270px;
+}
+
+.staff-product-container img {
+    width: 80%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+select, input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+	border-radius: 20px;
+}
+
+.product-mgmt {
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-mgmt {
+    width: 100%;
+}
+
+.discount-container,
+.system-config-container {
+    margin-bottom: 50px;
+}
+
+.discount-header {
+    border-bottom: 5px solid #c64a8a;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.config-option {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 50%;
+	border-radius: 20px;
+}
+
+.config-header {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.config-button {
+    margin: 0 auto;
+}
+

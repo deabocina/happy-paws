@@ -1,0 +1,103 @@
+h1 {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.custom-select {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 300px;
+	border-radius: 20px;
+}
+
+.product-table {
+    width: 40%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.product-table th, .product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.product-table th {
+    background-color: #f2f2f2;
+}
+
+.user-info-table {
+    width: 450px;
+    margin: 40px auto 20px auto;
+    border-collapse: collapse;
+}
+
+.user-info-table th, .user-info-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.user-info-table th {
+    background-color: #f2f2f2;
+}
+
+.order-summary-table {
+    width: 450px;
+    border-collapse: collapse;
+    margin: 40px auto 20px auto;
+}
+
+.order-summary-table th, .order-summary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.order-summary-table th {
+    background-color: #f2f2f2;
+}
+
+.price-order {
+    text-align: right;
+}
+
+#total-order {
+    font-weight: bold;
+}
+
+button {
+    margin-bottom: 40px;
+}
+
+#paypal-button {
+    background-color: transparent;
+    padding: 0;
+    border: 2px solid #00457C;
+    border-radius: 40px;
+    padding: 12px 30px;
+    cursor: pointer;
+}
+
+#paypal-button img {
+    width: 120px;
+    height: auto;
+}
+
+.delivery-note {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 60px 200px 60px 200px;
+}
