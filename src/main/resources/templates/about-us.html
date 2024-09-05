@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | About us</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/misc.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+<header th:if="${user == null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/login"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<header th:if="${user != null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/wishlist"><img src="/img/wishlist.png" alt="Wishlist" width="40" height="40"></a></li>
+            <li><a href="/user-page"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<h1>About Happy Paws</h1>
+<div class="introduction">
+    Welcome to Happy Paws, your one-stop destination for all your pet care needs! At Happy Paws, we believe that pets are
+    family, and we are dedicated to providing the best products and services to ensure their health, happiness, and well-being.<br><br>
+
+    Our journey began with a simple mission: to create a place where pet owners can find high-quality products and expert
+    advice to give their furry friends the love and care they deserve. Whether you have a playful pup, a curious kitty,
+    or any other furry companion, we're here to support you every step of the way.<br><br><br>
+</div>
+
+<h2>Our Values</h2>
+
+<ul class="values">
+    <li><strong>Quality:</strong> We handpick each product in our store to ensure it meets the highest standards of quality,
+        safety, and durability. Your pet's health and happiness are our top priorities.</li><br>
+    <li><strong>Variety:</strong> From premium pet food and treats to stylish accessories and essential grooming supplies,
+        we offer a wide range of products to cater to every pet's unique needs and preferences.</li><br>
+    <li><strong>Expertise:</strong> Our team consists of passionate pet lovers who are knowledgeable about pet care and are
+        here to provide personalized recommendations and helpful advice to assist you in making informed decisions for your pet.</li><br>
+    <li><strong>Community:</strong> We cherish the bond between pets and their owners and strive to foster a supportive and
+        inclusive community of pet lovers. Follow us on social media to join the conversation, share photos of your pets, and
+        connect with fellow pet enthusiasts.</li>
+</ul><br><br><br>
+
+<h2>Our Promise</h2>
+<div class="introduction" id="introduction-bottom">
+    At Happy Paws, we are committed to delivering exceptional customer service and ensuring a pawsitive shopping experience for
+    you and your furry friend. Whether you're a first-time pet owner or a seasoned pet parent, we're here to help you make every
+    moment with your pet a happy one.<br><br>
+    Thank you for choosing Happy Paws as your trusted partner in pet care. We look forward to serving you and your beloved pets!<br>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

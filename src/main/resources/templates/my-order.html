@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | My Orders</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/my-order.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/wishlist"><img src="/img/wishlist.png" alt="Wishlist" width="40" height="40"></a></li>
+            <li><a href="/user-page"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>My Orders</h1>
+
+<table class="my-orders-table">
+    <thead>
+    <tr>
+        <th>Order No.</th>
+        <th>Total Price</th>
+        <th>Delivery Option</th>
+        <th>Order Date</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(userOrders)}">
+        <td style="text-align: center; padding: 20px;" colspan="8">You haven't placed any orders yet.</td>
+    </tr>
+    <tr th:each="order : ${userOrders}" th:unless="${#lists.isEmpty(userOrders)}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.totalPrice} + ' €'"></td>
+        <td th:text="${order.deliveryOption}"></td>
+        <td th:text="${order.orderDate}"></td>
+        <td th:style="${order.orderStatus == 'Processing'} ? 'color: #FFC000; font-weight: bold;' : (${order.orderStatus == 'In Transit'} ? 'color: #1E90FF; font-weight: bold;' : 'color: #32CD32; font-weight: bold;')">
+            <span th:text="${order.orderStatus}"></span>
+        </td>
+<!--        <td colspan="6">-->
+<!--            <ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap;">-->
+<!--                <li th:each="product : ${orderProductsMap.get(order.id)}" style="margin-right: 10px; margin-bottom: 10px;">-->
+<!--                    <img th:src="@{'/img/' + ${product.productImage}}" alt="Product Image" class="order-image" style="max-width: 100px;">-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </td>-->
+        <td th:if="${order.orderStatus == 'Delivered'}">
+            <form id="ratingForm" th:action="@{/rate}" method="post">
+                <input type="hidden" name="orderId" th:value="${order.id}">
+                <label for="rating">Rate the product:</label>
+                <select id="rating" name="rating" th:if="${order.userRating == null}">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <span th:if="${order.userRating != null}" th:text="${'Rated: ' + order.userRating}"></span>
+                <button type="submit" class="purple-button" th:if="${order.userRating == null}">Rate</button>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

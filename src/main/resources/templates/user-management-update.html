@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | User Management</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/staff-mgmt.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+    <script src="/js/form-validation.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/admin-home"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/discount-management"><img src="/img/discount-management.png" alt="Discount Management" width="40" height="40"> DISCOUNT MANAGEMENT</a></li>
+            <li><a href="/product-management"><img src="/img/product-management.png" alt="Product Management" width="43" height="43"> PRODUCT MANAGEMENT</a></li>
+            <li><a href="/order-management"><img src="/img/order-management.png" alt="Order Management" width="40" height="40"> ORDER MANAGEMENT</a></li>
+            <li><a href="/user-management"><img src="img/user-management.png" alt="User Management" width="40" height="40"> USER MANAGEMENT</a></li>
+            <li><a href="/system-config"><img src="/img/system-config.png" alt="System Config" width="40" height="40"></a></li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Update User</h1>
+
+<form th:action="@{'/update-user/' + ${user.id}}" class="register__form" method="POST" th:object="${user}" onsubmit="return showConfirmation()">
+    <table>
+        <tr>
+            <td><p>Name:</p></td>
+            <td><input type="text" name="name" th:value="${user.name}"></td>
+        </tr>
+        <tr>
+            <td><p>Surname:</p></td>
+            <td><input type="text" name="surname" th:value="${user.surname}"></td>
+        </tr>
+        <tr>
+            <td><p>Role:</p></td>
+            <td>
+                <select id="role" name="role" >
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="User" th:selected="${user.role=='User'}">User</option>
+                    <option value="Staff" th:selected="${user.role=='Staff'}">Staff</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Gender:</p></td>
+            <td>
+                <select name="gender" id="gender" class="register-select" >
+                    <option value="" disabled>Select Gender</option>
+                    <option value="Male" th:selected="${user.gender=='Male'}">Male</option>
+                    <option value="Female" th:selected="${user.gender=='Female'}">Female</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Email:</p></td>
+            <td><input type="email" name="email" th:value="${user.email}"></td>
+        </tr>
+        <tr>
+            <td><p>Phone Number:</p></td>
+            <td><input type="text" name="phoneNumber" th:value="${user.phoneNumber}" title="Please enter a valid phone number with 8 to 15 digits." pattern="[0-9]{8,15}"></td>
+        </tr>
+        <tr>
+            <td><p>Date of Birth:</p></td>
+            <td><input type="date" name="dateOfBirth" id="dateOfBirth" th:value="${#dates.format(user.dateOfBirth, 'yyyy-MM-dd')}"></td>
+        </tr>
+        <tr>
+            <td><p>City:</p></td>
+            <td><select name="city" class="custom-select">
+                <option value="" disabled selected>Select City</option>
+                <option value="Zagreb" th:selected="${user.city == 'Zagreb'}">Zagreb</option>
+                <option value="Split" th:selected="${user.city == 'Split'}">Split</option>
+                <option value="Rijeka" th:selected="${user.city == 'Rijeka'}">Rijeka</option>
+                <option value="Osijek" th:selected="${user.city == 'Osijek'}">Osijek</option>
+                <option value="Zadar" th:selected="${user.city == 'Zadar'}">Zadar</option>
+                <option value="Slavonski Brod" th:selected="${user.city == 'Slavonski Brod<'}">Slavonski Brod</option>
+                <option value="Pula" th:selected="${user.city == 'Pula'}">Pula</option>
+                <option value="Sesvete" th:selected="${user.city == 'Sesvete'}">Sesvete</option>
+                <option value="Karlovac" th:selected="${user.city == 'Karlovac'}">Karlovac</option>
+                <option value="Varaždin" th:selected="${user.city == 'Varaždin'}">Varaždin</option>
+                <option value="Šibenik" th:selected="${user.city == 'Šibenik'}">Šibenik</option>
+                <option value="Sisak" th:selected="${user.city == 'Sisak'}">Sisak</option>
+                <option value="Knin" th:selected="${user.city == 'Knin'}">Knin</option>
+                <option value="Vinkovci" th:selected="${user.city == 'Vinkovci'}">Vinkovci</option>
+                <option value="Vukovar" th:selected="${user.city == 'Vukovar'}">Vukovar</option>
+                <option value="Dubrovnik" th:selected="${user.city == 'Dubrovnik'}">Dubrovnik</option>
+                <option value="Bjelovar" th:selected="${user.city == 'Bjelovar'}">Bjelovar</option>
+                <option value="Koprivnica" th:selected="${user.city == 'Koprivnica'}">Koprivnica</option>
+                <option value="Đakovo" th:selected="${user.city == 'Đakovo'}">Đakovo</option>
+                <option value="Požega" th:selected="${user.city == 'Požega'}">Požega</option>
+                <option value="Solin" th:selected="${user.city == 'Solin'}">Solin</option>
+                <option value="Kaštela" th:selected="${user.city == 'Kaštela'}">Kaštela</option>
+                <option value="Samobor" th:selected="${user.city == 'Samobor'}">Samobor</option>
+                <option value="Metković" th:selected="${user.city == 'Metković'}">Metković</option>
+                <option value="Čakovec" th:selected="${user.city == 'Čakovec'}">Čakovec</option>
+                <option value="Virovitica" th:selected="${user.city == 'Virovitica'}">Virovitica</option>
+                <option value="Kutina" th:selected="${user.city == 'Kutina'}">Kutina</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><p>Address:</p></td>
+            <td><input type="text" name="address" maxlength="30" th:value="${user.address}"></td>
+        </tr>
+        <tr>
+            <td><p>New Password:</p></td>
+            <td><input type="password" name="password" minlength="8" maxlength="20" placeholder="Enter password" th:value="${password}"></td>
+        </tr>
+        <tr>
+            <td><p>Confirm New Password:</p></td>
+            <td><input type="password" name="confirmPassword" minlength="8" maxlength="20" placeholder="Confirm password"></td>
+        </tr>
+    </table>
+    <input type="submit" class="update-button purple-button" value="Update">
+</form>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

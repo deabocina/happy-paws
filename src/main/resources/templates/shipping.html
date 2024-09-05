@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | Shipping</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/misc.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+<header th:if="${user == null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/login"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<header th:if="${user != null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/wishlist"><img src="/img/wishlist.png" alt="Wishlist" width="40" height="40"></a></li>
+            <li><a href="/user-page"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<h1>Shipping</h1>
+
+<div class="shipping-details">
+    1. <b>Orders over €35 are eligible for free shipping.</b> For orders below €35, a delivery fee of €4 (VAT included) will be applied.<br><br>
+
+    2. Delivery Time - <b>Estimated delivery time is within 1-3 business days.</b> Longer delivery times may occur during promotions and for
+    remote locations. Bank transfer orders are submitted to the delivery service only after receiving confirmation of payment.<br><br>
+
+    3. Longer delivery times may occur during web shop promotions.<br><br>
+
+    4. <b>Delivery is provided by the GLS courier service</b> and is available throughout the territory of the Republic of Croatia, except for
+    certain islands where HP delivers. Availability and delivery times to islands by GLS can be checked
+    <b><a href="https://gls-group.com/HR/en/business-customers/products-services/">HERE</a></b>. For the purpose of product
+    delivery to the buyer, the company provides the buyer's personal data to the courier service in order to fulfill its obligations
+    under this sales contract. The personal data provided include: name, surname, delivery address, and buyer's contact phone number.<br><br>
+
+    5. The courier will notify the recipient via SMS about the delivery time, one day before delivery. If the courier cannot find the
+    recipient at the specified delivery address, delivery will be attempted again on the 3rd and 5th day from the first delivery, with
+    prior notice, after which the package will be returned if not collected. Delivery is made to the entrance of the residential building
+    or to the nearest entrance accessible by the delivery vehicle. If it is a residential building, the courier is not obligated to carry
+    the goods to the floor where the buyer is located but only to the entrance of the building. Check payment methods
+    <b><a href="/payment-options">HERE</a></b>.<br><br>
+
+    6. <b>The delivery cost is stated in the basket overview before payment.</b> Orders over €35 are eligible for free delivery, applicable to
+    delivery to one address. Products with a specified additional surcharge in the catalog are exempt from this, regardless of the total
+    order amount. Any special surcharge (if applicable) is indicated for each individual item.<br><br>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

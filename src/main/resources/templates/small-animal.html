@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | Small Animals</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/pet-product.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+    <script src="/js/starter.js"></script>
+    <script src="/js/filters.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+<header th:if="${user == null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/login"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<header th:if="${user != null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/wishlist"><img src="/img/wishlist.png" alt="Wishlist" width="40" height="40"></a></li>
+            <li><a href="/user-page"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>All for small animals</h1>
+
+<div class="filter-container">
+    <form class="product-filter" th:action="@{/pet_product}" method="GET">
+        <input type="hidden" name="petType" th:value="Small-Animal">
+
+        <label for="category">Category: </label>
+        <select id="category" name="category">
+            <option value="ALL">All</option>
+            <option value="Food">Food</option>
+            <option value="Treats">Treats</option>
+        </select>
+
+        <label for="subcategory">Subcategory: </label>
+        <select id="subcategory" name="subcategory">
+            <option value="ALL">All</option>
+        </select>
+
+        <label for="brandName">Brand: </label>
+        <select id="brandName" name="brandName">
+            <option value="ALL">All</option>
+            <option th:each="brand : ${brands}" th:value="${brand.name}" th:text="${brand.name}"></option>
+        </select>
+
+        <input type="submit" value="Filter">
+    </form>
+
+    <label for="sort-order">Sort by: </label>
+    <select id="sort-order" onchange="sortProducts()">
+        <option value="asc">Price: Low to High</option>
+        <option value="desc">Price: High to Low</option>
+    </select>
+</div>
+
+<div th:if="${birthdayDiscountPercent != null}">
+    <h2 style="color: green; text-align: center;">
+        Happy Birthday <span style="font-size: 100%;" th:text="${birthdayPetName}"></span>!
+    </h2>
+    <p style="color: green; font-size: 18px; margin: 0 350px; text-align: center;">
+        Seize this opportunity to pamper your cherished pet with something truly special. Browse through our collection and discover the ideal gift to make their day unforgettable.
+    </p>
+</div>
+
+<div class="product-container">
+    <div class="product-row">
+        <div th:if="${#lists.isEmpty(filteredProducts) && (param.category != null || param.brandName != null)}">
+            <p>No products match the selected filters.</p>
+        </div>
+        <div class="product" th:each="product : ${#lists.isEmpty(filteredProducts) ? smallAnimalProducts : filteredProducts}">
+
+            <p class="product-stock" th:text="${product.stockQuantity > 10 ? 'Available' : (product.stockQuantity > 0 ? 'Limited availability' : 'Unavailable')}"
+               th:style="${product.stockQuantity > 10 ? 'color: green;' : (product.stockQuantity > 0 ? 'color: #ccac2e;' : 'color: red;')}"></p>
+
+            <div class="discount-info">
+                <p th:if="${brandDiscounts != null and brandDiscounts.containsKey(product.brand.id) and brandDiscounts.get(product.brand.id) > 0}"
+                   th:text="${brandDiscounts.get(product.brand.id) + '%' + ' OFF!'}"
+                   style="color: red"></p>
+                <p th:if="${brandDiscounts != null and brandDiscounts.get(product.brand.id) == 0}" style="visibility: hidden;">&nbsp;</p>
+            </div>
+
+            <img th:src="@{/img/} + ${product.productImage}" alt="Product Image" class="product-image">
+            <div>
+                <img src="/img/star.png" alt="Star Icon" width="20" height="20" class="product-info">
+                <p th:if="${product.currentRating > 0}" class="product-info" th:text="${'Current Rating: ' + product.currentRating} + ' (' + ${product.numberOfBuyers} + ')'"></p>
+                <p th:if="${product.currentRating == 0}" class="product-info" th:text="'No reviews for this product'"></p><br>
+                <span th:if="${product.numberOfBuyers > 0}" th:text="${'Number of buyers: ' + product.numberOfBuyers}"></span>
+            </div>
+            <h3 th:text="${product.name}"></h3>
+
+            <p th:if="${brandDiscounts != null and brandDiscounts.containsKey(product.brand.id) and brandDiscounts.get(product.brand.id) > 0}"
+               th:text="${product.price.add(product.price.multiply(product.taxAmount).divide(100)).setScale(2, T(java.math.RoundingMode).HALF_UP)} + ' &euro;'"
+               id="product-price-discount"></p>
+            <p th:unless="${brandDiscounts != null and brandDiscounts.containsKey(product.brand.id) and brandDiscounts.get(product.brand.id) > 0}"
+               th:text="${product.price.add(product.price.multiply(product.taxAmount).divide(100)).setScale(2, T(java.math.RoundingMode).HALF_UP)} + ' &euro;'"
+               id="product-price"></p>
+
+            <div class="product-button">
+                <th:block th:if="${user != null}">
+                    <form th:if="${wishlistProducts != null && wishlistProducts.contains(product)}" th:action="@{/remove-from-wishlist}" method="post" style="display: inline;">
+                        <button type="submit" class="user-wishlist-icon">
+                            <img src="/img/wishlisted.png" alt="Remove from Wishlist" class="product-info" />
+                        </button>
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                    </form>
+                    <form th:unless="${wishlistProducts != null && wishlistProducts.contains(product)}" th:action="@{/add-to-wishlist}" method="post" style="display: inline;">
+                        <button type="submit" class="user-wishlist-icon">
+                            <img src="/img/not-wishlisted.png" alt="Add to Wishlist" class="product-info" />
+                        </button>
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                    </form>
+                </th:block>
+                <a th:if="${user == null}" href="/login" class="wishlist-icon">
+                    <img src="/img/not-wishlisted.png" alt="Add to Wishlist" class="product-info" />
+                </a>
+
+                <form th:if="${product.stockQuantity > 0}" th:action="@{/add-to-cart}" method="post">
+                    <input type="hidden" name="productId" th:value="${product.id}">
+                    <button type="submit" class="purple-button">Add to Cart</button>
+                </form>
+                <button th:unless="${product.stockQuantity > 0}" class="purple-button" style="background-color: #ccc; color: #666; border-color: #666; cursor: not-allowed;" disabled>Out of Stock</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

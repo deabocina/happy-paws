@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | Brand Update</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/staff-mgmt.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+    <script src="/js/brand-update.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/admin-home"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/discount-management"><img src="/img/discount-management.png" alt="Discount Management" width="40" height="40"> DISCOUNT MANAGEMENT</a></li>
+            <li><a href="/product-management"><img src="/img/product-management.png" alt="Product Management" width="43" height="43"> PRODUCT MANAGEMENT</a></li>
+            <li><a href="/order-management"><img src="/img/order-management.png" alt="Order Management" width="40" height="40"> ORDER MANAGEMENT</a></li>
+            <li><a href="/user-management"><img src="img/user-management.png" alt="User Management" width="40" height="40"> USER MANAGEMENT</a></li>
+            <li><a href="/system-config"><img src="/img/system-config.png" alt="System Config" width="40" height="40"></a></li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Brand Update & Delete</h1>
+
+<div class="system-config-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Brand Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="brand : ${brands}">
+            <td th:text="${brand.name}"></td>
+            <td>
+            <td>
+                <form th:action="@{/delete-brand}" method="post" style="display:inline;">
+                    <input type="hidden" name="brandId" th:value="${brand.id}" />
+                    <button type="submit" style="background-color: transparent; border: none; cursor: pointer;" onclick="return confirm('Are you sure you want to delete this product?');"><img src="/img/trash-bin.png" alt="Bin" width="30" height="30"></button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3 class="discount-header">Update Brands</h3>
+    <form th:action="@{/update-brand}" method="post">
+        <label for="selectedBrandId">Select Brand:</label>
+        <select id="selectedBrandId" name="selectedBrandId">
+            <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
+        </select>
+
+        <label for="brandName">Brand Name:</label>
+        <input type="text" id="brandName" name="brandName">
+
+        <button type="submit" class="purple-button config-button">Update</button>
+    </form>
+</div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Happy Paws | Web shop for Pets</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="icon" type="image/x-icon" href="/img/happy-paws.ico">
+</head>
+<body>
+<header th:if="${user == null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/login"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<header th:if="${user != null}">
+    <nav>
+        <ul>
+            <li><a href="/"><img src="/img/logo.png" alt="Happy Paws Logo" width="170" height="120"></a></li>
+            <li><a href="/dog"><img src="/img/dog.png" alt="Dog" width="40" height="40"> DOG</a></li>
+            <li><a href="/cat"><img src="/img/cat.png" alt="Cat" width="40" height="40"> CAT</a></li>
+            <li><a href="/small-animal"><img src="/img/rabbit.png" alt="Rabbit" width="40" height="40"> SMALL ANIMALS</a></li>
+            <li class="search-bar">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Find the best for your furry friend..." style="text-indent: 20px;">
+                    <button type="submit" class="search-icon">
+                        <img src="/img/search.png" alt="Search Icon" width="20" height="20">
+                    </button>
+                </form>
+            </li>
+            <li><a href="/location"><img src="/img/location.png" alt="Location" width="40" height="40"></a></li>
+            <li><a href="/wishlist"><img src="/img/wishlist.png" alt="Wishlist" width="40" height="40"></a></li>
+            <li><a href="/user-page"><img src="/img/user.png" alt="User" width="40" height="40"></a></li>
+            <li style="position: relative;">
+                <a href="/shopping-bag" class="shopping-bag">
+                    <img src="/img/shopping-bag.png" alt="Shopping Bag" width="40" height="40">
+                    <span th:if="${cartItemCount > 0}" class="cart-item-count" th:text="${cartItemCount}"></span>
+                </a>
+            </li>
+            <li><a href="/logout"><img src="/img/logout.png" alt="Logout" width="40" height="40"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<img src="/img/pets-home.png" alt="Pets">
+
+<div class="home-icons">
+    <div>
+        <img src="/img/shipping.png" alt="Shipping" width="40" height="40">
+        <h4>Free shipping</h4>
+        <p>For all orders <br>
+            over €35</p>
+    </div>
+
+    <div>
+        <img src="/img/ribbon.png" alt="Taste Guarantee" width="40" height="40">
+        <h4>Taste guarantee</h4>
+        <p>If your pet doesn't like the food, <br>
+            return the remaining bag</p>
+    </div>
+
+    <div>
+        <img src="/img/vet-approved.png" alt="Vet-approved" width="40" height="40">
+        <h4>Vet-Approved Products</h4>
+        <p>Our products are recommended <br>
+            by veterinarians</p>
+    </div>
+
+    <div>
+        <img src="/img/secure.png" alt="Secure Payment" width="40" height="40">
+        <h4>Quick and Secure Checkout</h4>
+        <p>Shop with confidence using our <br>
+            secure payment options</p>
+    </div>
+
+    <div>
+        <img src="/img/communication.png" alt="Contact Us" width="40" height="40">
+        <h4>Need advice or assistance?</h4>
+        <p>Ask us, we're here <br>
+            for you</p>
+    </div>
+</div>
+
+<h1>Pet-specific Selection</h1>
+<div class="pet-selection-section">
+    <div>
+        <a href="/dog"><img src="/img/dog-home.jpg" alt="Dog" width="250" height="250"><p>Dog</p></a>
+    </div>
+    <div>
+        <a href="/cat"><img src="/img/cat-home.jpg" alt="Cat" width="250" height="250"><p>Cat</p></a>
+    </div>
+    <div>
+        <a href="/small-animal"><img src="/img/rabbit-home.png" alt="Rabbit" width="250" height="250"><p>Small animals</p></a>
+    </div>
+</div>
+
+
+<h1>Featured Categories for Dogs</h1>
+<div class="dog-selection-section">
+    <div>
+        <a href="http://localhost:8080/pet_product?petType=Dog&category=Food&subcategory=Dry+food&brandName=ALL"><img src="/img/dog-dry-food.jpg" alt="Dry food" width="250" height="250"><p>Dry food</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/pet_product?petType=Dog&category=Food&subcategory=Wet+food&brandName=ALL"><img src="/img/dog-wet-food.png" alt="Wet food" width="250" height="250"><p>Wet food</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/pet_product?petType=Dog&category=Treats&subcategory=ALL&brandName=ALL"><img src="/img/dog-treat.jpg" alt="Treats" width="250" height="250"><p>Treats</p></a>
+    </div>
+</div>
+
+<h1>Featured Categories for Cats</h1>
+<div class="cat-selection-section">
+    <div>
+        <a href="http://localhost:8080/pet_product?petType=Cat&category=Food&subcategory=Wet+food&brandName=ALL"><img src="/img/cat-wet-food.jpg" alt="Wet food" width="250" height="250"><p>Wet food</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/pet_product?petType=Cat&category=Treats&subcategory=ALL&brandName=ALL"><img src="/img/cat-treat.png" alt="Treats" width="250" height="250"><p>Treats</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/pet_product?petType=Cat&category=Food&subcategory=Dry+food&brandName=ALL"><img src="/img/cat-dry-food.png" alt="Dry food" width="250" height="250"><p>Dry food</p></a>
+    </div>
+</div>
+
+<h1>Featured Brands</h1>
+<div class="brand-selection-section">
+    <div>
+        <a href="http://localhost:8080/search?query=Brit"><img src="/img/brit.jpg" alt="Brit" width="250" height="250"><p>Brit</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/search?query=Brit+Care"><img src="/img/brit-care.png" alt="Brit Care" width="250" height="250"><p>Brit Care</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/search?query=Royal+Canin"><img src="/img/royal-canin.png" alt="Royal Canin" width="250" height="250"><p>Royal Canin</p></a>
+    </div>
+    <div>
+        <a href="http://localhost:8080/search?query=Wolfpack"><img src="/img/wolfpack.png" alt="Wolfpack" width="250" height="250"><p>Wolfpack</p></a>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Happy Paws</h4>
+                <ul>
+                    <li><img src="/img/paw.png" alt="Paw in a Heart" width="100" height="100"></li>
+                    <li><a href="#">© 2024 Happy Paws. All rights reserved.</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/shipping">Shipping</a></li>
+                    <li><a href="/payment-options">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>
+                        <img src="/img/mail.png" alt="mail" width="20" height="20">
+                        <a href="mailto:info@happypaws.com">info@happypaws.com</a>
+                    </li>
+                    <li>
+                        <img src="/img/telephone.png" alt="telephone" width="20" height="20">
+                        <a href="#">+123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#" id="back-to-top">Back to top</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
