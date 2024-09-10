@@ -10,7 +10,10 @@ Welcome to the Web Shop for Pets, an online platform designed to streamline the 
   - [Admin Features](#admin-features)
 - [Database](#database)
 
-
+![Screenshot (175)](https://github.com/user-attachments/assets/ef7a58d8-2210-469d-bf36-ffc76b4b33b5)
+![Screenshot (176)](https://github.com/user-attachments/assets/08342c80-ccd9-451e-b45c-939ca071339d)
+![Screenshot (177)](https://github.com/user-attachments/assets/580bec41-caa5-41f1-8c48-050114643dce)
+![Screenshot (178)](https://github.com/user-attachments/assets/58aa8c89-29bf-4ef4-8285-b05f52d4ee04)
 
 
 ## Key Features
