@@ -2,6 +2,8 @@
 ## Project Description
 Welcome to the Web Shop for Pets, an online platform designed to streamline the process of purchasing pet-related products. This platform caters to a wide range of users including customers, staff members and administrators, each with their unique set of features and permissions.
 
+![Screenshot (175)](https://github.com/user-attachments/assets/ef7a58d8-2210-469d-bf36-ffc76b4b33b5)
+
 ## List of Contents
 - [Project Description](#project-description)
 - [Key Features](#key-features)
@@ -10,10 +12,16 @@ Welcome to the Web Shop for Pets, an online platform designed to streamline the 
   - [Admin Features](#admin-features)
 - [Database](#database)
 
-![Screenshot (175)](https://github.com/user-attachments/assets/ef7a58d8-2210-469d-bf36-ffc76b4b33b5)
-![Screenshot (176)](https://github.com/user-attachments/assets/08342c80-ccd9-451e-b45c-939ca071339d)
-![Screenshot (177)](https://github.com/user-attachments/assets/580bec41-caa5-41f1-8c48-050114643dce)
-![Screenshot (178)](https://github.com/user-attachments/assets/58aa8c89-29bf-4ef4-8285-b05f52d4ee04)
+![Screenshot (6)](https://github.com/user-attachments/assets/050fcff9-a57e-4c6e-b9e3-36da81d548ac)
+![Screenshot (8)](https://github.com/user-attachments/assets/78254958-f4a8-424e-a72d-17c40c62f7b8)
+![Screenshot (9)](https://github.com/user-attachments/assets/ad9fa556-197a-42ac-ac1d-563efa8e1edd)
+![Screenshot (10)](https://github.com/user-attachments/assets/190fae91-ebd1-4dfd-a91f-131476ef92c2)
+![Screenshot (11)](https://github.com/user-attachments/assets/7b053eaf-8696-45d1-a55d-448f74d15559)
+![Screenshot (12)](https://github.com/user-attachments/assets/61b289a2-fe44-4287-9cbd-c64b21891cd3)
+![Screenshot (7)](https://github.com/user-attachments/assets/a33f5282-0810-4163-a056-62e98264d9dc)
+![Screenshot (14)](https://github.com/user-attachments/assets/38b3724b-4cc5-464a-b792-ac2505a94455)
+![Screenshot (13)](https://github.com/user-attachments/assets/6c5e6e54-b120-496f-9cb5-c9d5e3de15a7)
+
 
 
 ## Key Features
