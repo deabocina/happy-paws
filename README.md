@@ -3,12 +3,12 @@
 Welcome to Happy Paws, an online platform designed to streamline the process of purchasing pet-related products. This platform caters to a wide range of users including customers, staff members and administrators, each with their unique set of features and permissions.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8f4b721f-b3d7-47c1-aff5-53e8f4f6e42b" width="250" alt="Slika 1">
-  <img src="https://github.com/user-attachments/assets/55eeb515-d010-44bd-9ce6-a5a84b71ac08" width="250" alt="Slika 2">
-  <img src="https://github.com/user-attachments/assets/4d6b08ea-2f13-4d82-a7b9-5ea54f257a97" width="250" alt="Slika 3">
-  <img src="https://github.com/user-attachments/assets/be2f3f7e-0fd3-4b2e-a1f2-7022f421a6d6" width="250" alt="Slika 4">
-  <img src="https://github.com/user-attachments/assets/ce08ced3-2614-4d3b-bfaf-cd269b034847" width="250" alt="Slika 5">
-  <img src="https://github.com/user-attachments/assets/7a537583-a887-43eb-bd59-6ba223e43a67" width="250" alt="Slika 6">
+  <img src="https://github.com/user-attachments/assets/1536708c-fba4-408e-826e-4fc4010cbd7f" width="250" alt="Slika 1">
+  <img src="https://github.com/user-attachments/assets/c6ba78da-c7bc-41f3-8d44-d77cac3c4a05" width="250" alt="Slika 2">
+  <img src="https://github.com/user-attachments/assets/1cd51f86-8b00-484b-ae12-f61e0b879249" width="250" alt="Slika 3">
+  <img src="https://github.com/user-attachments/assets/12f80919-debd-47ed-a6ea-635fbe2d98c2" width="250" alt="Slika 4">
+  <img src="https://github.com/user-attachments/assets/8eeb20ad-0451-4ad2-8d82-2957e13e0de3" width="250" alt="Slika 5">
+  <img src="https://github.com/user-attachments/assets/89310fb5-84ca-4808-bd9f-58e870accc60" width="250" alt="Slika 6">
 </p>
 
 
