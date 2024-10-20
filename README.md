@@ -1,8 +1,16 @@
-# Web Shop for Pets
+# Happy Paws🐾
 ## Project Description
-Welcome to the Web Shop for Pets, an online platform designed to streamline the process of purchasing pet-related products. This platform caters to a wide range of users including customers, staff members and administrators, each with their unique set of features and permissions.
+Welcome to Happy Paws, an online platform designed to streamline the process of purchasing pet-related products. This platform caters to a wide range of users including customers, staff members and administrators, each with their unique set of features and permissions.
 
-![Screenshot (175)](https://github.com/user-attachments/assets/ef7a58d8-2210-469d-bf36-ffc76b4b33b5)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8f4b721f-b3d7-47c1-aff5-53e8f4f6e42b" width="250" alt="Slika 1">
+  <img src="https://github.com/user-attachments/assets/55eeb515-d010-44bd-9ce6-a5a84b71ac08" width="250" alt="Slika 2">
+  <img src="https://github.com/user-attachments/assets/4d6b08ea-2f13-4d82-a7b9-5ea54f257a97" width="250" alt="Slika 3">
+  <img src="https://github.com/user-attachments/assets/be2f3f7e-0fd3-4b2e-a1f2-7022f421a6d6" width="250" alt="Slika 4">
+  <img src="https://github.com/user-attachments/assets/ce08ced3-2614-4d3b-bfaf-cd269b034847" width="250" alt="Slika 5">
+  <img src="https://github.com/user-attachments/assets/7a537583-a887-43eb-bd59-6ba223e43a67" width="250" alt="Slika 6">
+</p>
+
 
 ## List of Contents
 - [Project Description](#project-description)
@@ -12,17 +20,6 @@ Welcome to the Web Shop for Pets, an online platform designed to streamline the 
   - [Admin Features](#admin-features)
 - [Database](#database)
 
-![Screenshot (6)](https://github.com/user-attachments/assets/050fcff9-a57e-4c6e-b9e3-36da81d548ac)
-![Screenshot (8)](https://github.com/user-attachments/assets/78254958-f4a8-424e-a72d-17c40c62f7b8)
-![Screenshot (9)](https://github.com/user-attachments/assets/ad9fa556-197a-42ac-ac1d-563efa8e1edd)
-![Screenshot (10)](https://github.com/user-attachments/assets/190fae91-ebd1-4dfd-a91f-131476ef92c2)
-![Screenshot (11)](https://github.com/user-attachments/assets/7b053eaf-8696-45d1-a55d-448f74d15559)
-![Screenshot (12)](https://github.com/user-attachments/assets/61b289a2-fe44-4287-9cbd-c64b21891cd3)
-![Screenshot (7)](https://github.com/user-attachments/assets/a33f5282-0810-4163-a056-62e98264d9dc)
-![Screenshot (14)](https://github.com/user-attachments/assets/38b3724b-4cc5-464a-b792-ac2505a94455)
-![Screenshot (13)](https://github.com/user-attachments/assets/6c5e6e54-b120-496f-9cb5-c9d5e3de15a7)
-
-
 
 ## Key Features
 
@@ -30,7 +27,7 @@ Welcome to the Web Shop for Pets, an online platform designed to streamline the 
 Customers can create accounts, browse products, manage their shopping carts and place orders. They can also track their order status and wishlist products. In addition to that, they can also create up to three pet profiles.
 - **Product Search and Filter**: Customers can search for products and use filters to narrow down results based on criteria like category, subcategory and brand. Application also includes the option to sort all products by price.
 - **Shopping Cart**: Users can add products to their shopping cart, view cart details and proceed to checkout. When it's time to complete their purchase, users will be redirected to an external PayPal sandbox page for secure payment processing. 
-- **Order Management:**: Customers can view their order history and track the status of their current orders.
+- **Order Management**: Customers can view their order history and track the status of their current orders.
 - **Profile Management**: Users can update their profiles, including contact information and preferences.
 - **Wishlist**: Customers can add products to their wishlist for future reference.
 - **Rating Products**: After the order has been delivered, user has the option to rate the delivery with numbers from 1 to 5.
